@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <style>
+    .itemColor {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <ul>
+    <li v-for="(item, index) in movies" v-on:click="setColor(index)" :class="getColor(index)">{{item}}</li>
+  </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      movies: ['海王','海尔兄弟','火影忍者','海贼王'],
+      isItemColor: false,
+      isThisItem: 0  //确定当前选中li下标
+    },
+    methods: {
+      setColor: function (index){
+        this.isThisItem = index;   //这个index为当前点击的index
+      },
+      getColor: function (index) {  //这个index是每个li的遍历下标
+        if(this.isThisItem === index) {  //如果当前遍历的就是点击的，更改其颜色
+          return {itemColor: true};
+        }
+      }
+    }
+  })
+</script>
+
+</body>
+</html>
