@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+
+
+</head>
+<body>
+
+
+<!--v-cloak指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。-->
+<!--需要结合css一起使用-->
+<div id="app" v-cloak>
+  {{message}}
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  // vue解析前，div中有一个属性v-cloak
+  // vue解析后，div中的v-cloak消失
+  setTimeout(function () {
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊'
+      }
+    })
+  }, 1000)
+
+</script>
+
+</body>
+</html>
