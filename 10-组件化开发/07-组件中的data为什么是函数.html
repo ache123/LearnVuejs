@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <cpn1></cpn1>
+  <cpn1></cpn1>
+  <cpn1></cpn1>
+</div>
+
+
+<template id="cpnBBB">
+  <div>
+    <h2>当前计数：{{counter}}</h2>
+    <button @click="add">+</button>
+    <button @click="sub">-</button>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+  //注册全局组件
+  Vue.component('cpn1', {
+    template: `#cpnBBB`,
+    data() {
+      return {
+        counter: 0
+      }
+    },
+    methods: {
+      add: function () {
+        console.log('add被执行');
+        this.counter++;
+      },
+      sub: function () {
+        console.log('sub被执行');
+        this.counter--;
+      }
+    }
+  })
+
+  //注册局部组件语法糖
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊'
+    }
+  })
+</script>
+
+</body>
+</html>

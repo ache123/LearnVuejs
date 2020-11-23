@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+<!--  当isShow为false时，该元素不存在dom中-->
+<!--  适用于一次切换的情况-->
+  <h2 v-if="isShow" id="aaa">{{message}}</h2>
+
+<!--  当isShow为false时，该元素还存在，只是display为none-->
+<!--  适用于元素频繁切换的情况-->
+  <h2 v-show="isShow" id="bbb">{{message}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊',
+      isShow: true
+    }
+  })
+</script>
+
+</body>
+</html>

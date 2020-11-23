@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+<!--  没有索引-->
+  <ul>
+    <li v-for="item in names">{{item}}</li>
+  </ul>
+
+<!--  有索引-->
+  <ul>
+    <li v-for="(item,index) in names">{{index+1}}.{{item}}</li>
+  </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊',
+      names: ['aaa', 'bbb', 'ccc']
+    }
+  })
+</script>
+
+</body>
+</html>
