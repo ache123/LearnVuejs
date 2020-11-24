@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <cpn></cpn>
+  <cpn></cpn>
+  <cpn ref="aaa"></cpn>
+  <button @click="btnClick">按钮</button>
+</div>
+
+<template id="cpn">
+  <div>我是子组件</div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊'
+    },
+    methods: {
+      btnClick() {
+        //1. 父组件访问子组件的东西 $children,一般用这个拿到所有的子组件
+        // console.log(this.$children);
+        // console.log(this.$children[0].name);;
+        // this.$children[0].showMessage();
+
+        //2.$refs  拿到单个的子组件
+        //$refs是对象类型，默认是一个空对象，需要在html中写ref属性
+        console.log(this.$refs.aaa.name);
+      }
+    },
+    components: {
+      cpn: {
+        template: `#cpn`,
+        methods: {
+          showMessage() {
+            console.log('showMessage');
+          }
+        },
+        data() {
+          return {
+            name: 'name11111'
+          }
+        }
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

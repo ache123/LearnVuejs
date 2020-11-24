@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+<!--  获取父组件数据-->
+  <cpn :cmovies="movies" :cmessage="message"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <ul>
+      <li v-for="item in cmovies">{{item}}</li>
+    </ul>
+    {{cmessage}}
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const cpn = {
+    template: `#cpn`,
+    //第一种方法
+    // props: ['cmovies', 'cmessage'],
+
+    //第二种  类型限制
+    // props: {
+    //   cmovies: Array,
+    //   cmessage: String
+    // },
+
+    //第三种，可以设置默认值,且这个值必需传给这个变量required（即 使用组件时需要对这个变量进行绑定）
+    props: {
+      //当这个变量类型是对象或数组时，默认值必须是一个函数
+      cmovies: {
+        type: Array,
+        default() {
+          return []
+        }
+      },
+      cmessage: {
+        type: String,
+        default: 'aaaa',
+        required: true
+      }
+    },
+
+
+
+  }
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊',
+      movies: ['海王','海贼王','海尔兄弟']
+    },
+    components: {
+      cpn
+    }
+  })
+</script>
+
+</body>
+</html>

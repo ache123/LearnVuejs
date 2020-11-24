@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <!--  子组件中使用驼峰标识命名，父组件需要改成-连接的语法-->
+  <cpn :c-info="info" :child-show-message="message"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>{{cInfo}}</h2>
+    <h2>{{childShowMessage}}</h2>
+  </div>
+
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const cpn = {
+    template: `#cpn`,
+    props: {
+      cInfo: {
+        type:Object,
+        default() {
+          return {};
+        }
+      },
+      childShowMessage: {
+        type: String,
+        default: ''
+      }
+    },
+
+
+
+  }
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'aaa',
+      info: {
+        name:'aaa',
+        age:18
+      }
+    },
+    components: {
+      cpn
+    }
+  })
+</script>
+
+</body>
+</html>

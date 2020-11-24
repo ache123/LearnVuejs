@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <!--  监听子组件发射的事件-->
+<!--  不用加括号item，因为vue会默认把参数传过去，就和默认传event事件一样-->
+  <cpn @itemclick="cpnClick"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <button v-for="item in categories" @click="btnClick(item)">
+      {{item.name}}
+    </button>
+  </div>
+
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const cpn = {
+    template: `#cpn`,
+    data() {
+      return {
+        categories: [
+          {id:'aaa', name: '热门推荐'},
+          {id:'bbb', name: '手机数码'},
+          {id:'ccc', name: '家用家电'},
+          {id:'ddd', name: '电脑办公'},
+        ]
+      }
+    },
+    methods: {
+      btnClick(item) {
+        // console.log(item);
+        //这里需要把item传给父组件,第一个参数是自定义事件名称，第二个是事件同时传递的参数
+        //自定义事件
+        this.$emit('itemclick', item);
+      }
+    }
+  }
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'aaa',
+      info: {
+        name:'aaa',
+        age:18
+      }
+    },
+    components: {
+      cpn
+    },
+    methods: {
+      cpnClick(item) {
+        console.log(item);
+      }
+    }
+  })
+</script>
+
+</body>
+</html>
