@@ -17,3 +17,17 @@ require('./css/normal.css');
 //依赖less文件
 require('./css/special.less');
 document.writeln('1111');
+
+//使用vue进行开发
+
+import Vue from 'vue'
+// import App from './vue/app'
+import App from './vue/App.vue'
+
+new Vue({
+  el: '#app',
+  template: '<App/>',
+  components: {
+    App
+  }
+})

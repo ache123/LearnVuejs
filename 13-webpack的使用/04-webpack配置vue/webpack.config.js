@@ -51,7 +51,20 @@ module.exports = {
             presets: ['es2015']
           }
         }
+      },
+      {
+        test: /\.vue$/,
+        use: ['vue-loader']
       }
     ]
+  },
+  resolve: {
+    //alias别名
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    },
+    //使导入时省略后缀
+    extensions: ['.js', '.css', '.vue']
   }
+
 }
