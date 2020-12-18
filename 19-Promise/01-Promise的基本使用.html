@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //1.使用settimeout
+  // setTimeout(() => {
+  //   console.log('Hello World');
+  // }, 1000);
+
+  //promise就是对异步操作进行封装
+
+  //链式编程
+  new Promise((resolve, reject) => {
+
+    //第一次网络请求代码
+    setTimeout(() => {
+      resolve()
+    }, 1000);
+  }).then(() => {
+    //第一次结果处理代码
+    console.log('hello world');
+    console.log('hello world');
+    console.log('hello world');
+    console.log('hello world');
+
+    return new Promise((resolve, reject) => {
+      //第二次网络请求代码
+      setTimeout(() => {
+        resolve()
+      }, 1000)
+    })
+  }).then(() => {
+    //第二次结果处理代码
+    console.log('hello vuejs');
+    console.log('hello vuejs');
+    console.log('hello vuejs');
+    console.log('hello vuejs');
+
+    return new Promise((resolve, reject) => {
+      //第三次网络请求代码
+      setTimeout(() => {
+        resolve()
+      }, 1000)
+    })
+  }).then(() => {
+    //第三次结果处理代码
+    console.log('hello python');
+    console.log('hello python');
+    console.log('hello python');
+    console.log('hello python');
+  })
+
+// then处理成功，catch处理是不
+//   new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       // 成功的时候调用人resolve
+//       // resolve('hello world');
+//
+//       //失败的时候调用reject
+//       reject('error message');
+//     }, 1000)
+//   }).then((data) => {
+//     console.log(data);
+//     console.log(data);
+//     console.log(data);
+//   }).catch((err) => {
+//     console.log(err);
+//   })
+</script>
+
+</body>
+</html>
